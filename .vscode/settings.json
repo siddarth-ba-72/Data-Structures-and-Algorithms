@@ -1,0 +1,10 @@
+{
+	"git.ignoreLimitWarning": true,
+	"files.associations": {
+		"limits.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"string.h": "c",
+		"ctype.h": "c"
+	}
+}
