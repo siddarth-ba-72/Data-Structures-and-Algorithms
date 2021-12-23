@@ -110,7 +110,7 @@ int minNum(Node root)
 int heightBST(Node root)
 {
 	if (root == NULL)
-		return -1;
+		return 0;
 	int lDeapth = heightBST(root->left);
 	int rDeapth = heightBST(root->right);
 	return (lDeapth > rDeapth) ? lDeapth + 1 : rDeapth + 1;
@@ -119,9 +119,7 @@ int heightBST(Node root)
 // ? Number of nodes in the tree
 int numOfNodes(Node root)
 {
-	if (root == NULL)
-		return 0;
-	return 1 + numOfNodes(root->left) + numOfNodes(root->right);
+	return (root == NULL) ? 0 : 1 + numOfNodes(root->left) + numOfNodes(root->right);
 }
 
 // ? Number of leaf nodes in a tree
