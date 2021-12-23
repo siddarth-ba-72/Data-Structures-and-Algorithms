@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define MAX 20
 
 struct node
 {
@@ -65,6 +66,24 @@ void postorderTraversal(Node root)
 	printf("\n");
 }
 
+// ? Level order traversal of a tree
+void levelOrderTraversal(Node root)
+{
+	Node qu[MAX], curr;
+	int front = 0, rear = -1;
+	qu[++rear] = root;
+	while (front <= rear)
+	{
+		curr = qu[front++];
+		printf("%d ", curr->data);
+		if (curr->left != NULL)
+			qu[++rear] = curr->left;
+		if (curr->right != NULL)
+			qu[++rear] = curr->right;
+	}
+	printf("\n");
+}
+
 // ? Maximum value in a tree
 int maxNum(Node root)
 {
@@ -115,6 +134,36 @@ int numOfLeafNodes(Node root)
 	return numOfLeafNodes(root->left) + numOfLeafNodes(root->right);
 }
 
+// ? Delete a node from the tree
+Node deleteNode(Node root, int key)
+{
+	if (root == NULL)
+		return root;
+	if (key < root->data)
+		root->left = deleteNode(root->left, key);
+	else if (key > root->data)
+		root->right = deleteNode(root->right, key);
+	else
+	{
+		if (root->left == NULL)
+		{
+			Node temp = root->right;
+			free(root);
+			return temp;
+		}
+		else if (root->right == NULL)
+		{
+			Node temp = root->left;
+			free(root);
+			return temp;
+		}
+		Node temp = root->right;
+		temp->data = minNum(root->right);
+		root->data = temp->data;
+		root->right = deleteNode(root->right, temp->data);
+	}
+}
+
 // ? Sorting an array of integers
 // void sort(int arr[], int n)
 // {
@@ -163,6 +212,11 @@ int main()
 	printf("Height of Tree = %d\n", heightBST(root));
 	printf("Number of Nodes = %d\n", numOfNodes(root));
 	printf("Number of Leaf Nodes = %d\n", numOfLeafNodes(root));
+	int del = 40;
+	root = deleteNode(root, del);
+	inorderTraversal(root);
+	printf("\n");
+	levelOrderTraversal(root);
 
 	return 0;
 }
