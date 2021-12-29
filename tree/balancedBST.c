@@ -216,8 +216,8 @@ int main()
 	printf("\n");
 	levelOrderTraversal(root);
 
+	root = deleteNode(root, 50);
+	inorderTraversal(root);
+
 	return 0;
 }
-/*
-? Q6. Function to delete a node in a tree
-*/
