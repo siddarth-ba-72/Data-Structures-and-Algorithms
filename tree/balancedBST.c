@@ -155,43 +155,42 @@ Node deleteNode(Node root, int key)
 			free(root);
 			return temp;
 		}
-		Node temp = root->right;
-		temp->data = minNum(root->right);
+		Node temp = minNum(root->right);
 		root->data = temp->data;
 		root->right = deleteNode(root->right, temp->data);
 	}
 }
 
 // ? Sorting an array of integers
-// void sort(int arr[], int n)
-// {
-// 	int i, j, temp;
-// 	for (i = 0; i < n - 1; i++)
-// 	{
-// 		for (j = 0; j < n - i - 1; j++)
-// 		{
-// 			if (arr[j] > arr[j + 1])
-// 			{
-// 				temp = arr[j];
-// 				arr[j] = arr[j + 1];
-// 				arr[j + 1] = temp;
-// 			}
-// 		}
-// 	}
-// }
+void sort(int arr[], int n)
+{
+	int i, j, temp;
+	for (i = 0; i < n - 1; i++)
+	{
+		for (j = 0; j < n - i - 1; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
 
 // ? Convert to balanced BST from given array of integers
-// Node arrToBst(int arr[], int low, int high, int n)
-// {
-// 	sort(arr, n);
-// 	if (low > high)
-// 		return NULL;
-// 	int mid = (low + high) / 2;
-// 	Node root = newNode(arr[mid]);
-// 	root->left = arrToBst(arr, low, mid - 1, n);
-// 	root->right = arrToBst(arr, mid + 1, high, n);
-// 	return root;
-// }
+Node arrToBst(int arr[], int low, int high, int n)
+{
+	sort(arr, n);
+	if (low > high)
+		return NULL;
+	int mid = (low + high) / 2;
+	Node root = newNode(arr[mid]);
+	root->left = arrToBst(arr, low, mid - 1, n);
+	root->right = arrToBst(arr, mid + 1, high, n);
+	return root;
+}
 
 int main()
 {
@@ -218,6 +217,13 @@ int main()
 
 	root = deleteNode(root, 50);
 	inorderTraversal(root);
+
+	// printf("\n");
+	// int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
+	// int n = sizeof(arr) / sizeof(arr[0]);
+	// Node rootFromArray = arrToBst(arr, 0, n - 1, n);
+	// inorderTraversal(rootFromArray);
+	// printf("\n");
 
 	return 0;
 }
