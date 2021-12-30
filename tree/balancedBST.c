@@ -222,26 +222,27 @@ int main()
 	insert(root, 80);
 	inorderTraversal(root);
 	printf("\n");
-	printf("Max Value = %d\n", maxNum(root));
-	printf("Min Value = %d\n", minNum(root));
-	printf("Height of Tree = %d\n", heightBST(root));
-	printf("Number of Nodes = %d\n", numOfNodes(root));
-	printf("Number of Leaf Nodes = %d\n", numOfLeafNodes(root));
+
 	int del = 40;
+	printf("Deleting Node = %d\n", del);
 	root = deleteNode(root, del);
 	inorderTraversal(root);
 	printf("\n");
 	levelOrderTraversal(root);
 
-	root = deleteNode(root, 50);
-	inorderTraversal(root);
-
-	// printf("\n");
-	// int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
-	// int n = sizeof(arr) / sizeof(arr[0]);
-	// Node rootFromArray = arrToBst(arr, 0, n - 1, n);
-	// inorderTraversal(rootFromArray);
-	// printf("\n");
+	printf("\n\t\t-:Array to BST:-\n");
+	int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printf("Array:-\n");
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	Node rootFromArray = arrToBst(arr, 0, n - 1, n);
+	printf("BST(inOrder traversal):-\n");
+	inorderTraversal(rootFromArray);
+	printf("\n");
 
 	return 0;
 }
