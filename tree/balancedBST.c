@@ -95,6 +95,15 @@ int maxNum(Node root)
 	return curr->data;
 }
 
+// ? Max value node
+Node maxNode(Node root)
+{
+	Node curr = root;
+	while (curr && curr->right != NULL)
+		curr = curr->right;
+	return curr;
+}
+
 // ? Minimum value in a tree
 int minNum(Node root)
 {
@@ -104,6 +113,15 @@ int minNum(Node root)
 	while (curr->left != NULL)
 		curr = curr->left;
 	return curr->data;
+}
+
+// ? Min value node
+Node minValueNode(Node root)
+{
+	Node curr = root;
+	while (curr && curr->left != NULL)
+		curr = curr->left;
+	return curr;
 }
 
 // ? Finding the height of a tree
@@ -155,7 +173,7 @@ Node deleteNode(Node root, int key)
 			free(root);
 			return temp;
 		}
-		Node temp = minNum(root->right);
+		Node temp = minValueNode(root->right);
 		root->data = temp->data;
 		root->right = deleteNode(root->right, temp->data);
 	}
