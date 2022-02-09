@@ -223,26 +223,28 @@ int main()
 	inorderTraversal(root);
 	printf("\n");
 
-	int del = 40;
+	int del;
+	printf("Enter the node to be deleted: ");
+	scanf("%d", &del);
 	printf("Deleting Node = %d\n", del);
 	root = deleteNode(root, del);
 	inorderTraversal(root);
 	printf("\n");
 	levelOrderTraversal(root);
 
-	printf("\n\t\t-:Array to BST:-\n");
-	int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
-	int n = sizeof(arr) / sizeof(arr[0]);
-	printf("Array:-\n");
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
-	Node rootFromArray = arrToBst(arr, 0, n - 1, n);
-	printf("BST(inOrder traversal):-\n");
-	inorderTraversal(rootFromArray);
-	printf("\n");
+	// printf("\n\t\t-:Array to BST:-\n");
+	// int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
+	// int n = sizeof(arr) / sizeof(arr[0]);
+	// printf("Array:-\n");
+	// for (int i = 0; i < n; i++)
+	// {
+	// 	printf("%d ", arr[i]);
+	// }
+	// printf("\n");
+	// Node rootFromArray = arrToBst(arr, 0, n - 1, n);
+	// printf("BST(inOrder traversal):-\n");
+	// inorderTraversal(rootFromArray);
+	// printf("\n");
 
 	return 0;
 }
