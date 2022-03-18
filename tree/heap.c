@@ -55,7 +55,7 @@ void display(int arr[], int n)
 		printf("Heap is empty\n");
 		return;
 	}
-	printf("The priority queue contents\n");
+	printf("The priority queue contents: ");
 	for (i = 0; i < n; i++)
 		printf("%d ", arr[i]);
 	printf("\n");
@@ -76,21 +76,23 @@ int main()
 		switch (choice)
 		{
 		case 1:
-			printf("Enter the item to be inserted\n");
+			printf("Enter the item to be inserted: ");
 			scanf("%d", &item);
 			n = insertHeap(item, a, n);
+			display(a, n);
 			break;
 		case 2:
 			n = deleteHeap(a, n);
+			display(a, n);
 			break;
 		case 3:
 			display(a, n);
 			break;
 		case 4:
-			printf("\nProgram terminates now\n");
+			printf("Program terminates now\n");
 			exit(0);
 		default:
-			printf("\nPlease enter a valid choice...\n");
+			printf("Please enter a valid choice...\n");
 		}
 	}
 }
