@@ -33,7 +33,7 @@ Node insert(Node root, int value)
 	return root;
 }
 
-// ? Inorder Traversal of Tree
+// ? Inorder Traversal of Tree [LNR]
 void inorderTraversal(Node root)
 {
 	if (root != NULL)
@@ -44,7 +44,7 @@ void inorderTraversal(Node root)
 	}
 }
 
-// ? Preorder traversal of a node
+// ? Preorder traversal of a node [NLR]
 void preorderTraversal(Node root)
 {
 	if (root == NULL)
@@ -55,7 +55,7 @@ void preorderTraversal(Node root)
 	printf("\n");
 }
 
-// ? Postorder traversal of a node
+// ? Postorder traversal of a node[LRN]
 void postorderTraversal(Node root)
 {
 	if (root == NULL)
@@ -96,7 +96,7 @@ int maxNum(Node root)
 }
 
 // ? Max value node
-Node maxNode(Node root)
+Node maxValueNode(Node root)
 {
 	Node curr = root;
 	while (curr && curr->right != NULL)
