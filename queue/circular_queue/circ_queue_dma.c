@@ -1,96 +1,106 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
-int QUEUE_SIZE = 5;
+int QSIZE = 2;
+int *q = NULL, front = 0, rear = -1, count = 0;
 
-int *qu = NULL;
-int front = 0, rear = -1, count = 0;
-
-int isFull()
+int isQfull()
 {
-	return (count == QUEUE_SIZE);
+	if (count == QSIZE)
+		return 1;
+	return 0;
 }
 
-int isEmpty()
+int isQempty()
 {
-	return (count == 0);
+	if (count == 0)
+		return 1;
+	return 0;
 }
 
-void enqueue()
+void insertQ()
 {
-	if (isFull())
+	int item, i;
+	if (isQfull())
 	{
-		qu = (int *)realloc(qu, 1 * sizeof(int));
-		QUEUE_SIZE++;
+		printf("\nQueue Overflow...Using realloc() to increase the size...\n");
+		q = realloc(q, 1 * sizeof(int));
+		QSIZE++;
 		if (front > rear)
 		{
-			for (int i = QUEUE_SIZE - 2; i >= 0; i--)
-				qu[i + 1] = qu[i];
+			for (i = QSIZE - 2; i >= front; i--)
+				q[i + 1] = q[i];
 			front++;
 		}
 	}
-	int item;
-	printf("Enter the item to be inserted: ");
+	printf("\n Enter an item: ");
 	scanf("%d", &item);
-	rear = (rear + 1) % QUEUE_SIZE;
-	qu[rear] = item;
+	rear = (rear + 1) % QSIZE;
+	q[rear] = item;
 	count++;
 }
 
-void dequeue()
+void deleteQ()
 {
-	if (isEmpty())
+	int item;
+	if (isQempty())
+		printf("\nQueue underflow...\n");
+	else
 	{
-		printf("Queue is empty\n");
-		return;
+		item = q[front];
+		front = (front + 1) % QSIZE;
+		count--;
+		printf("\nItem deleted: %d", item);
 	}
-	int item = qu[front];
-	front = (front + 1) % QUEUE_SIZE;
-	count--;
-	printf("Deleted item is: %d\n", item);
 }
 
-void display()
+void displayQ()
 {
-	if (isEmpty())
+	int i, f;
+	if (isQempty())
+		printf("\nQueue underflow.. no elements to display\n");
+	else
 	{
-		printf("Queue is empty\n");
-		return;
+		printf("\nItems in the Queue : ");
+		f = front;
+		for (i = 1; i <= count; i++)
+		{
+			printf("%d\t", q[f]);
+			f = (f + 1) % QSIZE;
+		}
 	}
-	printf("Queue is: ");
-	for (int i = front; i <= rear; i++)
-		printf("%d ", qu[i]);
-	printf("\n");
 }
 
-int main()
+void main()
 {
-	qu = (int *)malloc(QUEUE_SIZE * sizeof(int));
 	int choice;
-	printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+	q = (int *)malloc(QSIZE * sizeof(int));
+	printf("1. Insert\n2. Delete\n3. Display\n4. Exit");
 	while (1)
 	{
-		printf("Enter your choice: ");
+		printf("\nEnter your choice: ");
 		scanf("%d", &choice);
 		switch (choice)
 		{
 		case 1:
-			enqueue();
-			display();
+			insertQ();
+			displayQ();
 			break;
 		case 2:
-			dequeue();
-			display();
+			deleteQ();
+			displayQ();
 			break;
 		case 3:
-			display();
+			displayQ();
 			break;
+
 		case 4:
+			printf("\nThank you... The circular program exits now\n");
+
 			exit(0);
+
 		default:
-			printf("Wrong choice\n");
+			printf("\nInvalid choice... Please enter correct choice");
 		}
 	}
-	return 0;
 }
