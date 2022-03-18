@@ -12,7 +12,7 @@ void insert_rear()
 		printf("Queue overflow\n");
 		return;
 	}
-	printf("Enter the item:\n");
+	printf("Enter the item: ");
 	scanf("%d", &item);
 	r = r + 1;
 	q[r] = item;
@@ -54,11 +54,12 @@ void display()
 		printf("Queue is empty\n");
 		return;
 	}
-	printf("Contents of the queue are:\n");
+	printf("Contents of the queue are: ");
 	for (int i = f; i <= r; i++)
 	{
 		printf("%d ", q[i]);
 	}
+	printf("\n");
 }
 
 int main()
@@ -66,7 +67,7 @@ int main()
 	printf("\n1:insert_rear\n2:delete_front\n3:display\n");
 	while (1)
 	{
-		printf("Enter the choice:\n");
+		printf("Enter the choice: ");
 		scanf("%d", &ch);
 		switch (ch)
 		{
