@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#define MAX 50
 
-int arr[50];
+int arr[MAX];
 int n = -1;
 
 int parent(int i)
@@ -51,18 +52,16 @@ void shiftDown_heap(int i)
 
 void insertQu(int val)
 {
+	if (n == MAX)
+	{
+		printf("Heap is Full\n");
+		return;
+	}
+	printf("Enter the element to insert: ");
+	scanf("%d", &val);
 	n++;
 	arr[n] = val;
 	shiftUp_heap(n);
-}
-
-int getMax()
-{
-	int res = arr[0];
-	arr[0] = arr[n];
-	n--;
-	shiftDown_heap(0);
-	return res;
 }
 
 void changePriority(int i, int val)
@@ -75,21 +74,13 @@ void changePriority(int i, int val)
 		shiftDown_heap(i);
 }
 
-int maxNode()
-{
-	return arr[0];
-}
-
-void deleteQu(int i)
-{
-	arr[i] = maxNode() + 1;
-	shiftUp_heap(i);
-	getMax();
-}
-
 void deleteQuRoot()
 {
-	getMax();
+	int res = arr[0];
+	arr[0] = arr[n];
+	n--;
+	shiftDown_heap(0);
+	printf("Root deleted = %d\n", res);
 }
 
 void display()
@@ -101,18 +92,33 @@ void display()
 
 int main()
 {
-	insertQu(5);
-	insertQu(3);
-	insertQu(7);
-	insertQu(1);
-	insertQu(2);
-	insertQu(4);
-
-	display();
-
-	deleteQuRoot();
-	deleteQuRoot();
-	display();
+	int choice, val;
+	printf("Max Heap implementation\n");
+	printf("1.Insert\n2.Delete\n");
+	printf("3.Display\n4.Exit\n");
+	while (1)
+	{
+		printf("Enter the choice: ");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			insertQu(val);
+			display();
+			break;
+		case 2:
+			deleteQuRoot();
+			display();
+		case 3:
+			display();
+			break;
+		case 4:
+			exit(0);
+		default:
+			printf("Enter the valid choice \n");
+			break;
+		}
+	}
 
 	return 0;
 }
