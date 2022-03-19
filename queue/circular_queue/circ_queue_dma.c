@@ -23,17 +23,15 @@ void insertQ()
 	int item, i;
 	if (isQfull())
 	{
-		printf("\nQueue Overflow...Using realloc() to increase the size...\n");
-		q = realloc(q, 1 * sizeof(int));
-		QSIZE++;
-		if (front > rear)
-		{
-			for (i = QSIZE - 2; i >= front; i--)
-				q[i + 1] = q[i];
-			front++;
-		}
+		q = realloc(q, (++QSIZE) * sizeof(int));
+		// if (front > rear)
+		// {
+		// 	for (i = QSIZE - 2; i >= front; i--)
+		// 		q[i + 1] = q[i];
+		// 	front++;
+		// }
 	}
-	printf("\n Enter an item: ");
+	printf("Enter an item: ");
 	scanf("%d", &item);
 	rear = (rear + 1) % QSIZE;
 	q[rear] = item;
@@ -44,13 +42,13 @@ void deleteQ()
 {
 	int item;
 	if (isQempty())
-		printf("\nQueue underflow...\n");
+		printf("Queue is empty\n");
 	else
 	{
 		item = q[front];
 		front = (front + 1) % QSIZE;
 		count--;
-		printf("\nItem deleted: %d", item);
+		printf("Item deleted: %d\n", item);
 	}
 }
 
@@ -58,16 +56,17 @@ void displayQ()
 {
 	int i, f;
 	if (isQempty())
-		printf("\nQueue underflow.. no elements to display\n");
+		printf("Queue is empty\n");
 	else
 	{
-		printf("\nItems in the Queue : ");
+		printf("Items in the Queue : ");
 		f = front;
 		for (i = 1; i <= count; i++)
 		{
-			printf("%d\t", q[f]);
+			printf("%d ", q[f]);
 			f = (f + 1) % QSIZE;
 		}
+		printf("\n");
 	}
 }
 
@@ -75,10 +74,10 @@ void main()
 {
 	int choice;
 	q = (int *)malloc(QSIZE * sizeof(int));
-	printf("1. Insert\n2. Delete\n3. Display\n4. Exit");
+	printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n");
 	while (1)
 	{
-		printf("\nEnter your choice: ");
+		printf("Enter your choice: ");
 		scanf("%d", &choice);
 		switch (choice)
 		{
@@ -96,7 +95,6 @@ void main()
 
 		case 4:
 			printf("\nThank you... The circular program exits now\n");
-
 			exit(0);
 
 		default:

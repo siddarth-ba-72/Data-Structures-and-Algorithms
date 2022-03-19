@@ -21,8 +21,7 @@ void enqueue()
 {
 	if (isFull())
 	{
-		qu = (int *)realloc(qu, 1 * sizeof(int));
-		QUEUE_SIZE++;
+		qu = (int *)realloc(qu, (++QUEUE_SIZE) * sizeof(int));
 	}
 	int item;
 	printf("Enter the item to be inserted: ");
