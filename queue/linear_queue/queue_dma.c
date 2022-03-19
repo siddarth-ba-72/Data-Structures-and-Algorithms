@@ -23,12 +23,6 @@ void enqueue()
 	{
 		qu = (int *)realloc(qu, 1 * sizeof(int));
 		QUEUE_SIZE++;
-		if (front > rear)
-		{
-			for (int i = QUEUE_SIZE - 2; i >= 0; i--)
-				qu[i + 1] = qu[i];
-			front++;
-		}
 	}
 	int item;
 	printf("Enter the item to be inserted: ");

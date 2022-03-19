@@ -16,7 +16,7 @@ queue createQueue(int capacity)
 	queue qu = (queue)malloc(sizeof(struct Queue));
 	qu->capacity = capacity;
 	qu->front = qu->size = 0;
-	qu->rear = capacity - 1;
+	qu->rear = -1;
 	qu->arr = (int *)malloc(qu->capacity * sizeof(int));
 	return qu;
 }

@@ -6,10 +6,11 @@
 int qu[QUEUE_SIZE];
 int front = 0;
 int rear = -1;
+int size = 0;
 
 int isEmpty()
 {
-	return rear < front;
+	return size == 0;
 }
 
 int isFull()
@@ -29,6 +30,7 @@ void enQueue()
 	scanf("%d", &item);
 	rear++;
 	qu[rear] = item;
+	size++;
 }
 
 int dequeue()
@@ -39,6 +41,7 @@ int dequeue()
 		return INT_MIN;
 	}
 	int item = qu[front++];
+	size--;
 	return item;
 }
 
