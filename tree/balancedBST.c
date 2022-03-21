@@ -212,39 +212,59 @@ Node arrToBst(int arr[], int low, int high, int n)
 
 int main()
 {
+	int choice, val;
+	printf("1. Insert Node\n");
+	printf("2. Delete Node Node\n");
+	printf("3. Inorder Traversal\n");
+	printf("4. Postorder Traversal\n");
+	printf("5. Preorder Traversal\n");
+	printf("6. Levelorder Traversal\n");
+	printf("7. Max Node\n");
+	printf("8. Min Node\n");
+	printf("9. Exit\n");
 	Node root = NULL;
-	root = insert(root, 50);
-	insert(root, 30);
-	insert(root, 20);
-	insert(root, 40);
-	insert(root, 70);
-	insert(root, 60);
-	insert(root, 80);
-	inorderTraversal(root);
-	printf("\n");
-
-	int del;
-	printf("Enter the node to be deleted: ");
-	scanf("%d", &del);
-	printf("Deleting Node = %d\n", del);
-	root = deleteNode(root, del);
-	inorderTraversal(root);
-	printf("\n");
-	levelOrderTraversal(root);
-
-	// printf("\n\t\t-:Array to BST:-\n");
-	// int arr[] = {8, 6, 7, 9, 11, 2, 5, 13, 16, 19};
-	// int n = sizeof(arr) / sizeof(arr[0]);
-	// printf("Array:-\n");
-	// for (int i = 0; i < n; i++)
-	// {
-	// 	printf("%d ", arr[i]);
-	// }
-	// printf("\n");
-	// Node rootFromArray = arrToBst(arr, 0, n - 1, n);
-	// printf("BST(inOrder traversal):-\n");
-	// inorderTraversal(rootFromArray);
-	// printf("\n");
+	while (1)
+	{
+		printf("Enter your choice: ");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			printf("Enter the value: ");
+			scanf("%d", &val);
+			root = insert(root, val);
+			levelOrderTraversal(root);
+			break;
+		case 2:
+			printf("Enter the value: ");
+			scanf("%d", &val);
+			root = deleteNode(root, val);
+			levelOrderTraversal(root);
+			break;
+		case 3:
+			inorderTraversal(root);
+			break;
+		case 4:
+			postorderTraversal(root);
+			break;
+		case 5:
+			preorderTraversal(root);
+			break;
+		case 6:
+			levelOrderTraversal(root);
+			break;
+		case 7:
+			printf("Max Node: %d\n", maxNum(root));
+			break;
+		case 8:
+			printf("Min Node: %d\n", minNum(root));
+			break;
+		case 9:
+			exit(0);
+		default:
+			printf("Invalid choice\n");
+		}
+	}
 
 	return 0;
 }
