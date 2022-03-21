@@ -9,6 +9,7 @@
 .vscode/
 aat/
 images/
+Out/
 
 # Test binary, built with `go test -c`
 *.test
