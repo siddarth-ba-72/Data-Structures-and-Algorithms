@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-// ? USING ARRAY-STACK
-
 double compute(char symbol, double op1, double op2)
 {
 	switch (symbol)

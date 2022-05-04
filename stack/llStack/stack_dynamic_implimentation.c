@@ -20,8 +20,7 @@ void push()
     int item;
     if (isfull())
     {
-        s = realloc(s, MAX_SIZE * sizeof(int));
-        MAX_SIZE += 2;
+        s = realloc(s, (MAX_SIZE + 1) * sizeof(int));
     }
     printf("Enter an element: ");
     scanf("%d", &item);
@@ -32,19 +31,22 @@ void pop()
 {
     int item;
     if (isempty())
-        printf("No elements to pop\n");
-    else
     {
-        item = s[top--];
-        printf("The popped element = %d\n", item);
+        printf("No elements to pop\n");
+        return;
     }
+    item = s[top--];
+    printf("The popped element = %d\n", item);
 }
 
 void peek()
 {
     int item;
     if (isempty())
+    {
         printf("No elements to peek\n");
+        return;
+    }
     printf("The top element = %d\n", s[top]);
 }
 
