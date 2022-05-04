@@ -24,12 +24,6 @@ void insertQ()
 	if (isQfull())
 	{
 		q = realloc(q, (++QSIZE) * sizeof(int));
-		// if (front > rear)
-		// {
-		// 	for (i = QSIZE - 2; i >= front; i--)
-		// 		q[i + 1] = q[i];
-		// 	front++;
-		// }
 	}
 	printf("Enter an item: ");
 	scanf("%d", &item);

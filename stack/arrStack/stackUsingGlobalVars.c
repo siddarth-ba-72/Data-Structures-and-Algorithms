@@ -85,6 +85,7 @@ void main()
 			break;
 		case 4:
 			printf("Peek element = %d\n", peek());
+			break;
 		case 5:
 			exit(0);
 		default:

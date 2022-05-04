@@ -12,13 +12,14 @@ int isEmpty(int top)
 	return top == -1;
 }
 
-void push(int stack[], int *top, int value)
+void push(int stack[], int *top)
 {
 	if (isFull(*top))
 	{
 		printf("Stack is full\n");
 		return;
 	}
+	int value;
 	printf("Enter the value to be pushed: ");
 	scanf("%d", &value);
 	stack[++(*top)] = value;
@@ -55,7 +56,7 @@ void display(int stack[], int top)
 void main()
 {
 	int stack[MAX], top = -1;
-	int choice, value;
+	int choice;
 	printf("\n1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n");
 	while (1)
 	{
@@ -64,7 +65,7 @@ void main()
 		switch (choice)
 		{
 		case 1:
-			push(stack, &top, value);
+			push(stack, &top);
 			display(stack, top);
 			break;
 		case 2:

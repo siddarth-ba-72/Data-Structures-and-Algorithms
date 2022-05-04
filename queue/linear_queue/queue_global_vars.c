@@ -15,7 +15,7 @@ int isEmpty()
 
 int isFull()
 {
-	return rear == QUEUE_SIZE - 1;
+	return size == QUEUE_SIZE;
 }
 
 void enQueue()

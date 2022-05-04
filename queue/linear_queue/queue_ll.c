@@ -35,21 +35,19 @@ void addToQueue(queue qu)
 {
 	if (isFull(qu))
 		qu->arr = (int *)realloc(qu->arr, (++qu->capacity) * sizeof(int));
-	qu->rear++;
 	int data;
 	printf("Enter the element to add to queue: ");
 	scanf("%d", &data);
-	qu->arr[qu->rear] = data;
-	qu->size = qu->size + 1;
+	qu->arr[++qu->rear] = data;
+	qu->size++;
 }
 
 int removeFromQueue(queue qu)
 {
 	if (isEmpty(qu))
 		return INT_MIN;
-	int popped = qu->arr[qu->front];
-	qu->front = (qu->front + 1) % qu->capacity;
-	qu->size = qu->size - 1;
+	int popped = qu->arr[qu->front++];
+	qu->size--;
 	return popped;
 }
 
