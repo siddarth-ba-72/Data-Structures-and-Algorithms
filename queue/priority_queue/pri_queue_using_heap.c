@@ -50,13 +50,14 @@ void shiftDown_heap(int i)
 	}
 }
 
-void insertQu(int val)
+void insertQu()
 {
 	if (n == MAX)
 	{
 		printf("Heap is Full\n");
 		return;
 	}
+	int val;
 	printf("Enter the element to insert: ");
 	scanf("%d", &val);
 	n++;
@@ -103,7 +104,7 @@ int main()
 		switch (choice)
 		{
 		case 1:
-			insertQu(val);
+			insertQu();
 			display();
 			break;
 		case 2:

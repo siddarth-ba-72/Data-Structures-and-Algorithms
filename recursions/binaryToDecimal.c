@@ -2,15 +2,17 @@
 #include <stdlib.h>
 #include <math.h>
 
+// Binary to decimal recursion
 int binToDec(int bin)
 {
-	int decNum = 0;
-	int counter = 0;
-	int k = decNum % 10;
-	counter++;
-	if (k == 1)
-		decNum += pow(2, counter);
-	return binToDec(bin / 10);
+	if (bin == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return (bin % 10) + 2 * binToDec(bin / 10);
+	}
 }
 
 int main()
