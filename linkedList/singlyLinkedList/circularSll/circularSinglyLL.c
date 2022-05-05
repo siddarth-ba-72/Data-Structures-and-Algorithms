@@ -25,9 +25,7 @@ Node insertFrontCll(Node first)
 	temp->info = elem;
 	temp->link = temp;
 	if (first == NULL)
-	{
 		return temp;
-	}
 	else
 	{
 		temp->link = first;

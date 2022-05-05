@@ -6,13 +6,8 @@
 int binToDec(int bin)
 {
 	if (bin == 0)
-	{
 		return 0;
-	}
-	else
-	{
-		return (bin % 10) + 2 * binToDec(bin / 10);
-	}
+	return (bin % 10) + 2 * binToDec(bin / 10);
 }
 
 int main()

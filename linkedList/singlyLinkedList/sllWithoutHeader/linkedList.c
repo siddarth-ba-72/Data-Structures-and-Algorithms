@@ -48,11 +48,6 @@ Node insertRare(Node first)
 	// * check if LinkedList is empty
 	if (first == NULL)
 		return temp;
-	if (first->link == NULL)
-	{
-		first->link = temp;
-		return first;
-	}
 	Node current = first;
 	while (current->link != NULL)
 	{
@@ -103,7 +98,6 @@ Node insertAfterElement(Node first)
 Node insertBefore(Node first)
 {
 	Node temp = NULL;
-	Node ptr = NULL;
 	int key;
 	if (first == NULL)
 	{
@@ -112,7 +106,6 @@ Node insertBefore(Node first)
 	}
 	printf("Enter the key element: ");
 	scanf("%d", &key);
-	ptr = first;
 	if (first->info == key)
 	{
 		temp = (Node)malloc(sizeof(struct node));
@@ -128,6 +121,7 @@ Node insertBefore(Node first)
 		first = temp;
 		return first;
 	}
+	Node ptr = first;
 	while (ptr != NULL && ptr->link->info != key)
 	{
 		ptr = ptr->link;
