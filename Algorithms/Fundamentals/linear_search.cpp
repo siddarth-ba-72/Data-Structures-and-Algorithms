@@ -39,7 +39,7 @@ int main()
 	}
 	else
 	{
-		cout << "Element found at index: " << index << endl;
+		cout << "Element found at position: " << index + 1 << endl;
 	}
 
 	return 0;
