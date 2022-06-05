@@ -5,6 +5,7 @@
 *.so
 *.dylib
 *.docx
+*.pdf
 
 .vscode/
 aat/
