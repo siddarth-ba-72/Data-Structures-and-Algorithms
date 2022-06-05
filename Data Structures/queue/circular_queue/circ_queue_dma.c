@@ -6,16 +6,12 @@ int *q = NULL, front = 0, rear = -1, count = 0;
 
 int isQfull()
 {
-	if (count == QSIZE)
-		return 1;
-	return 0;
+	return count == QSIZE;
 }
 
 int isQempty()
 {
-	if (count == 0)
-		return 1;
-	return 0;
+	return count == 0;
 }
 
 void insertQ()
