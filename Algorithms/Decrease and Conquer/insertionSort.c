@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-// Insertion sort algorithm
+int count = 0;
 
 void insertionSort(int arr[], int n)
 {
@@ -14,6 +15,7 @@ void insertionSort(int arr[], int n)
 		{
 			arr[j + 1] = arr[j];
 			j = j - 1;
+			count++;
 		}
 		arr[j + 1] = key;
 	}
@@ -26,17 +28,19 @@ int main()
 	scanf("%d", &n);
 
 	int arr[n];
-	printf("Enter the elements: ");
 	for (int i = 0; i < n; i++)
 	{
-		scanf("%d", &arr[i]);
+		arr[i] = rand() % 100;
 	}
 
+	clock_t start, end;
+
+	start = clock();
 	insertionSort(arr, n);
-	printf("Sorted array: ");
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d ", arr[i]);
-	}
+	end = clock();
+
+	printf("Count = %d", count);
+	printf("\nTime taken to sort %d numbers = %f secs\n\n", n, ((double)(end - start)) / CLOCKS_PER_SEC);
+
 	return 0;
 }
