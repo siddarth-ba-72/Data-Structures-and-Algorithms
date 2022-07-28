@@ -37,6 +37,10 @@ int main()
 
 	start = clock();
 	insertionSort(arr, n);
+	for (int j = 0; j < 500000; j++)
+	{
+		int temp = 38 / 500;
+	}
 	end = clock();
 
 	printf("Count = %d", count);
