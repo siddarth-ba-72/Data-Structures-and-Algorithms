@@ -137,3 +137,65 @@
         return pairs;
     }
 ```
+
+## iv. Sort 0s, 1s and 2s
+- https://www.naukri.com/code360/problems/sort-0-1-2_631055
+```java
+    public static void sortZerosOnesAndTwos(int[] arr) {
+        int i = 0;
+        int j = 0;
+        int k = arr.length - 1;
+
+        while (j <= k) {
+            if (arr[j] == 0) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j++;
+            } else if (arr[j] == 2) {
+                int temp = arr[j];
+                arr[j] = arr[k];
+                arr[k] = temp;
+                k--;
+            } else
+                j++;
+        }
+    }
+```
+
+## v. Triplet Sum
+- https://www.naukri.com/code360/problems/triplets-with-given-sum_893028
+```java
+    public static ArrayList<ArrayList<Integer>> findTriplets(int[] arr, int n, int K) {
+
+        Arrays.sort(arr);
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            if (i != 0 && arr[i] == arr[i - 1])
+                continue;
+            int j = i + 1;
+            int k = n - 1;
+
+            while (j < k) {
+                int sum = arr[i] + arr[j] + arr[k];
+                if (sum > K)
+                    k--;
+                else if (sum < K)
+                    j++;
+                else {
+                    list.add(new ArrayList<>(Arrays.asList(arr[i], arr[j], arr[k])));
+                    j++;
+                    k--;
+                    while (j < k && arr[j - 1] == arr[j])
+                        j++;
+                    while (j < k && arr[k + 1] == arr[k])
+                        k--;
+                }
+            }
+        }
+
+        return list;
+    }
+```
